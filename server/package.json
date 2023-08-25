@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "db.json"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
+  ],
+  "scripts": {
+    "dev:server": "nodemon index.js",
+    "start": "node index.js",
+    "watch": "json-server db.json --port=3000"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "json-server": "^0.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
